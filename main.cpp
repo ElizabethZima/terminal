@@ -8,7 +8,9 @@
 double currency;
 std::map<int, Terminale*> commands;
 
-
+void Visitor(Terminale* terminal){
+    terminal->handle();
+}
 
 void Menu(){
     using namespace std;
@@ -42,19 +44,8 @@ int main() {
         int command;
         cin >> command;
 
-        switch (command) {
-            case 1:
-                commands[1]->handle();
-                break;
-            case 2:
-                commands[2]->handle();
-                break;
-            case 3:
-                commands[3]->handle();
-                break;
-            default:
-                return 0;
-        }
+        if(command == 1 || command == 2 || command == 3) Visitor(commands[command]);
+        else return 0;
 
     }while(true);
 }
