@@ -1,12 +1,12 @@
 #include <iostream>
-#include <map>
+#include <vector>
 #include "includes/Terminale.hpp"
 #include "includes/Deposite.hpp"
 #include "includes/Withdraw.hpp"
 #include "includes/Pay.hpp"
 
 double currency;
-std::map<int, Terminale*> commands;
+std::vector<Terminale*> commands;
 
 void Visitor(Terminale* terminal){
     terminal->handle();
@@ -32,10 +32,10 @@ int main() {
     cin >> currency;
 
 
+    commands.push_back(new Deposite());
+    if(currency >= 100) commands.push_back(new Withdraw());
+    commands.push_back(new Pay());
 
-    commands.insert(std::make_pair(1, new Deposite()));
-    if(currency >= 100) commands.insert(std::make_pair(2, new Withdraw()));
-    commands.insert(std::make_pair(3, new Pay()));
 
 
     do{
@@ -44,7 +44,7 @@ int main() {
         int command;
         cin >> command;
 
-        if(command == 1 || command == 2 || command == 3) Visitor(commands[command]);
+        if(command == 1 || command == 2 || command == 3) Visitor(commands[command - 1]);
         else return 0;
 
     }while(true);
