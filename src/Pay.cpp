@@ -19,10 +19,13 @@ void Pay::handle() {
             case 2:
                 if(Payment()) cout << "The bill is paid\n";
                 break;
-
-            default:
+            case 3:
                 command = -1;
                 break;
+
+            default:
+                exit(0);
+
 
         }
         if(command == -1) break;
@@ -36,7 +39,8 @@ void PaymentMenu() {
     cout << "What do you want to pay? \n";
     cout << "1. Pay Mobile communication\n";
     cout << "2. Pay Utilities\n";
-    cout << "3. Exit\n";
+    cout << "3. Return to the home screen\n";
+    cout << "4. Exit\n";
 
 }
 

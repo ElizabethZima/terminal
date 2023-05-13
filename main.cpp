@@ -7,7 +7,7 @@
 
 double currency;
 std::map<int, Terminale*> commands;
-std::map<int, int>::size_type i;
+
 
 
 void Menu(){
@@ -17,7 +17,7 @@ void Menu(){
     cout << "1. Deposite \n";
     if(currency >= 100) cout <<  "2. Withdrow\n";
     if(currency >= 50) cout << "3. Pay\n";
-    cout <<" Exit \n";
+    cout <<"4. Exit \n";
 
 
 }
@@ -54,8 +54,6 @@ int main() {
                 break;
             default:
                 return 0;
-
-
         }
 
     }while(true);
